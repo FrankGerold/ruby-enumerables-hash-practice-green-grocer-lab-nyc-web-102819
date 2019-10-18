@@ -44,6 +44,7 @@ end
 
 def apply_clearance(cart)
   clearance_price = 0.80
+  
   cleared_cart = cart.reduce({})  do
     |memo, (item, details)|
     memo[item] = details

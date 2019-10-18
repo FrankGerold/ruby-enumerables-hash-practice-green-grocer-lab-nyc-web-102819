@@ -21,7 +21,7 @@ def apply_coupons(cart, coupons)
     memo[item] = details
     coupons.each do
       |coupon|
-      if coupon[:item] = memo[item]
+      if coupon[:item] == memo[item]
         new_item = item + " W/COUPON"
         while (memo[item][:count] >= coupon[:num])  do
           if memo.key?(new_item)

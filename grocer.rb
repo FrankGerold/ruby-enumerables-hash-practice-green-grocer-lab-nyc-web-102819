@@ -91,6 +91,6 @@ def checkout(cart, coupons)
   if cart_total > discount_minimum
     cart_total *= discount_price
   end
-  cart_total.round(2)
+  cart_total = cart_total.round(2)
   cart_total
 end

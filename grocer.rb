@@ -68,7 +68,7 @@ def apply_clearance(cart)
     if details[:clearance]
       memo[item][:price] *= clearance_price
     end
-    memo[item][:price].round(2)
+    memo[item][:price] = memo[item][:price].round(2)
     memo
   end
   cleared_cart

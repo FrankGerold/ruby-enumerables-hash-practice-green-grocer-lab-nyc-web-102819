@@ -16,30 +16,40 @@ def consolidate_cart(cart)
 end
 
 def apply_coupons(cart, coupons)
-  coupon_cart = cart.reduce({}) do
-    |memo, (item, details)|
-    memo[item] = details
-    coupons.each do
-      |coupon|
-      if coupon[:item] == memo[item]
-        new_item = item + " W/COUPON"
-        while (memo[item][:count] >= coupon[:num])  do
-          if memo.key?(new_item)
-            memo[new_item][:count] += coupon[:num]
-            memo[item][:count] -= coupon[:num]
-          else
-            memo[new_item] = {}
-            memo[new_item][:count] = coupon[:num]
-            memo[new_item][:clearance] = memo[item][:clearance]
-            memo[new_item][:price] = coupon[:cost]/coupon[:num]
-            memo[item][:count] -= coupon[:num]
-          end
-        end
+  # coupon_cart = cart.reduce({}) do
+  #   |memo, (item, details)|
+  #   memo[item] = details
+  #   coupons.each do
+  #     |coupon|
+  #     if coupon[:item] == memo[item]
+  #       new_item = item + " W/COUPON"
+  #       while (memo[item][:count] >= coupon[:num])  do
+  #         if memo.key?(new_item)
+  #           memo[new_item][:count] += coupon[:num]
+  #           memo[item][:count] -= coupon[:num]
+  #         else
+  #           memo[new_item] = {}
+  #           memo[new_item][:count] = coupon[:num]
+  #           memo[new_item][:clearance] = memo[item][:clearance]
+  #           memo[new_item][:price] = coupon[:cost]/coupon[:num]
+  #           memo[item][:count] -= coupon[:num]
+  #         end
+  #       end
+  #     end
+  #   end
+  #   memo
+  # end
+  # coupon_cart
+  
+  coupons.each do |coupon|
+    if cart[coupon[:item]] && cart[coupon[:item]][:count] >= coupon[:num]
+      new_item = item + " W/COUPON"
+      if cart[new_item]
+        
       end
     end
-    memo
   end
-  coupon_cart
+  
 end
 
 def apply_clearance(cart)
